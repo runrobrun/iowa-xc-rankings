@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
 
+This Angular application is designed to allow Iowa Track Coaches Association cross country ranking committee members to submit weekly rankings. The committee chair can then review the compiled rankings and finalize the voting. Once polls are submitted they will be sent to media outlets and open for publishing on websites. 
+
+Users can view past polls.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
