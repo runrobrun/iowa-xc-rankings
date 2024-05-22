@@ -1,15 +1,8 @@
 <mat-sidenav-container style="height: 100vh">
   <mat-sidenav #sidenav mode="side" opened="true" style="width: 300px; background-color: #efefef">
     <nav class="menu">
-      <p>
-        <a routerLink="/home">Home</a>
-      </p>
-      <p>
-        <a routerLink="/ballots">Ballots</a>
-      </p>
-      <p>
-        <a routerLink="/instruction">Instructions</a>
-      </p>
+      <button mat-stroked-button routerLink="/" type="button">Home</button>
+      <button mat-stroked-button routerLink="/classifications" type="button">Classifications</button>
     </nav>
 
   </mat-sidenav>
@@ -20,7 +13,8 @@
       </button>
       Iowa XC Polls
     </mat-toolbar>
-    <app-welcome></app-welcome>
-    <router-outlet></router-outlet>
+    <div class="main-body">
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
