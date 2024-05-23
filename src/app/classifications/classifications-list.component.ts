@@ -1,10 +1,12 @@
-import {Component, inject} from '@angular/core';
+import {Component, EventEmitter, inject, Output} from '@angular/core';
 import {AsyncPipe} from '@angular/common';
 import {ClassificationsService} from './classifications.service';
 import {Observable, of} from 'rxjs';
 import {Classification} from './classification';
 import {MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {EditClassificationDialogComponent} from './edit-classification-dialog.component';
 
 @Component({
   selector: 'app-classifications-list',
@@ -18,12 +20,19 @@ import {MatIcon} from '@angular/material/icon';
   styleUrl: './classifications-list.component.css'
 })
 export class ClassificationsListComponent {
+
   private _classificationsService = inject(ClassificationsService);
 
   boysClassifications$: Observable<Classification[]> | undefined;
   girlsClassifications$: Observable<Classification[]> | undefined;
 
-  constructor() {
+  constructor(private dialog: MatDialog,) {
+    this._classificationsService.classificationEdited.subscribe(
+      () => {
+        this.getBoysClassifications();
+        this.getGirlsClassifications();
+      }
+    )
     this.getBoysClassifications();
     this.getGirlsClassifications();
   }
@@ -54,5 +63,19 @@ export class ClassificationsListComponent {
       this.getGirlsClassifications();
     }
 
+  }
+
+  editClassification(classification: Classification) {
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.minWidth = '400px';
+
+    dialogConfig.data = classification;
+    this.dialog
+      .open(EditClassificationDialogComponent, dialogConfig)
+      .afterClosed()
+      .subscribe()
   }
 }

@@ -1,4 +1,4 @@
-import {inject, Injectable} from '@angular/core';
+import {EventEmitter, inject, Injectable} from '@angular/core';
 import {
   collection,
   collectionData,
@@ -6,11 +6,11 @@ import {
   Firestore,
   getDocs,
   orderBy,
-  query,
+  query, updateDoc,
   where
 } from '@angular/fire/firestore';
 import {Classification} from './classification';
-import {Observable} from 'rxjs';
+import {from, Observable} from 'rxjs';
 
 const PATH = 'classifications';
 
@@ -20,6 +20,8 @@ const PATH = 'classifications';
 export class ClassificationsService {
   private _firestore = inject(Firestore);
   private _collection= collection(this._firestore, PATH);
+
+  classificationEdited = new EventEmitter<Classification>();
 
   getClassifications() {
     return collectionData(this._collection, { idField: 'id'}) as Observable<Classification[]>;
@@ -47,4 +49,7 @@ export class ClassificationsService {
   }
 
 
+  updateClassification(id: string | undefined, changes: any) {
+    return updateDoc(this.document(id), {...changes});
+  }
 }

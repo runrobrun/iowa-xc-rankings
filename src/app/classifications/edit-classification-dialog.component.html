@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Edit Classification</h2>
+<mat-dialog-content [formGroup]="form">
+  <mat-form-field appearance="outline">
+    <input placeholder="Classification Name" matInput formControlName="classificationName" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-select formControlName="classificationGender">
+      <mat-option value="Boys">Boys</mat-option>
+      <mat-option value="Girls">Girls</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button (click)="close()">Close</button>
+
+  <button mat-raised-button color="primary" (click)="save()">Save</button>
+</mat-dialog-actions>
