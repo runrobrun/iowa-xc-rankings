@@ -1,5 +1,14 @@
 import {inject, Injectable} from '@angular/core';
-import {collection, collectionData, Firestore, getDocs, orderBy, query, where} from '@angular/fire/firestore';
+import {
+  collection,
+  collectionData,
+  deleteDoc, doc,
+  Firestore,
+  getDocs,
+  orderBy,
+  query,
+  where
+} from '@angular/fire/firestore';
 import {Classification} from './classification';
 import {Observable} from 'rxjs';
 
@@ -27,6 +36,14 @@ export class ClassificationsService {
     querySnapshot.forEach((doc) =>  {
       classifications = [...classifications, { id: doc.id, ...doc.data() } as Classification]});
     return classifications;
+  }
+
+  deleteClassification(classificationId: string | undefined) {
+    return deleteDoc(this.document(classificationId));
+  }
+
+  private document(id: string | undefined) {
+    return doc(this._firestore, `${PATH}/${id}`);
   }
 
 

@@ -47,4 +47,12 @@ export class ClassificationsListComponent {
     }
   }
 
+  onDelete(id: string | undefined) {
+    if (confirm('Are you sure you want to delete this classification?')) {
+      this._classificationsService.deleteClassification(id);
+      this.getBoysClassifications();
+      this.getGirlsClassifications();
+    }
+
+  }
 }
