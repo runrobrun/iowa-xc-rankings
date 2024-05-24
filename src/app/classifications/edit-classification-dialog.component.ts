@@ -13,6 +13,8 @@ import {MatButton} from '@angular/material/button';
 import {Classification} from './classification';
 import {ClassificationsService} from './classifications.service';
 import {MatOption, MatSelect} from '@angular/material/select';
+import {NgIf} from '@angular/common';
+
 
 @Component({
   selector: 'app-edit-classification-dialog',
@@ -26,7 +28,8 @@ import {MatOption, MatSelect} from '@angular/material/select';
     MatDialogActions,
     MatButton,
     MatSelect,
-    MatOption
+    MatOption,
+    NgIf
   ],
   templateUrl: './edit-classification-dialog.component.html',
   styleUrl: './edit-classification-dialog.component.css'
@@ -41,7 +44,6 @@ export class EditClassificationDialogComponent {
     @Inject(MAT_DIALOG_DATA) classification: Classification,
     private classificationsService: ClassificationsService
   ) {
-    console.log("Classification")
     this.classification = classification;
     this.form = this.fb.group({
       classificationGender: classification.classificationGender,
@@ -59,6 +61,19 @@ export class EditClassificationDialogComponent {
     this.classificationsService.updateClassification(this.classification.id, changes);
     this.classificationsService.classificationEdited.emit();
     this.dialogRef.close()
+  }
+
+  add() {
+    const val = this.form.value;
+    const newClassification: Partial<Classification> = {
+      classificationGender: val.classificationGender,
+      classificationName: val.classificationName
+    }
+
+    this.classificationsService.createClassification(newClassification);
+    this.classificationsService.classificationEdited.emit();
+    this.dialogRef.close()
+
   }
 
 }

@@ -1,5 +1,6 @@
 import {EventEmitter, inject, Injectable} from '@angular/core';
 import {
+  addDoc,
   collection,
   collectionData,
   deleteDoc, doc,
@@ -52,4 +53,9 @@ export class ClassificationsService {
   updateClassification(id: string | undefined, changes: any) {
     return updateDoc(this.document(id), {...changes});
   }
+
+  createClassification(newClassification: Partial<Classification>) {
+    return addDoc(this._collection, newClassification);
+  }
+
 }

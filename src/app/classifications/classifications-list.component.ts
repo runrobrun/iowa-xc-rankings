@@ -3,7 +3,7 @@ import {AsyncPipe} from '@angular/common';
 import {ClassificationsService} from './classifications.service';
 import {Observable, of} from 'rxjs';
 import {Classification} from './classification';
-import {MatIconButton} from '@angular/material/button';
+import {MatButton, MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {EditClassificationDialogComponent} from './edit-classification-dialog.component';
@@ -14,7 +14,8 @@ import {EditClassificationDialogComponent} from './edit-classification-dialog.co
   imports: [
     AsyncPipe,
     MatIconButton,
-    MatIcon
+    MatIcon,
+    MatButton
   ],
   templateUrl: './classifications-list.component.html',
   styleUrl: './classifications-list.component.css'
@@ -73,6 +74,19 @@ export class ClassificationsListComponent {
     dialogConfig.minWidth = '400px';
 
     dialogConfig.data = classification;
+    this.dialog
+      .open(EditClassificationDialogComponent, dialogConfig)
+      .afterClosed()
+      .subscribe()
+  }
+
+  addClassification() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.minWidth = '400px';
+    dialogConfig.data = {}
+
     this.dialog
       .open(EditClassificationDialogComponent, dialogConfig)
       .afterClosed()
