@@ -6,7 +6,7 @@ import {Classification} from './classification';
 import {MatButton, MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import {EditClassificationDialogComponent} from './edit-classification-dialog.component';
+import {ClassificationDialogComponent} from './classification-dialog.component';
 
 @Component({
   selector: 'app-classifications-list',
@@ -76,7 +76,7 @@ export class ClassificationsListComponent {
 
     dialogConfig.data = classification;
     this.dialog
-      .open(EditClassificationDialogComponent, dialogConfig)
+      .open(ClassificationDialogComponent, dialogConfig)
       .afterClosed()
       .subscribe()
   }
@@ -89,7 +89,7 @@ export class ClassificationsListComponent {
     dialogConfig.data = {}
 
     this.dialog
-      .open(EditClassificationDialogComponent, dialogConfig)
+      .open(ClassificationDialogComponent, dialogConfig)
       .afterClosed()
       .subscribe()
   }

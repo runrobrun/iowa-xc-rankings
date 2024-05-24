@@ -31,15 +31,15 @@ import {NgIf} from '@angular/common';
     MatOption,
     NgIf
   ],
-  templateUrl: './edit-classification-dialog.component.html',
-  styleUrl: './edit-classification-dialog.component.css'
+  templateUrl: './classification-dialog.component.html',
+  styleUrl: './classification-dialog.component.css'
 })
-export class EditClassificationDialogComponent {
+export class ClassificationDialogComponent {
   form: UntypedFormGroup;
   classification: Classification;
 
   constructor(
-    private dialogRef: MatDialogRef<EditClassificationDialogComponent>,
+    private dialogRef: MatDialogRef<ClassificationDialogComponent>,
     private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) classification: Classification,
     private classificationsService: ClassificationsService

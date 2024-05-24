@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditClassificationDialogComponent } from './edit-classification-dialog.component';
+import { ClassificationDialogComponent } from './classification-dialog.component';
 
 describe('EditClassificationDialogComponent', () => {
-  let component: EditClassificationDialogComponent;
-  let fixture: ComponentFixture<EditClassificationDialogComponent>;
+  let component: ClassificationDialogComponent;
+  let fixture: ComponentFixture<ClassificationDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EditClassificationDialogComponent]
+      imports: [ClassificationDialogComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(EditClassificationDialogComponent);
+
+    fixture = TestBed.createComponent(ClassificationDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
