@@ -2,10 +2,10 @@
 <h2 mat-dialog-title *ngIf="!classification.id">Add Classification</h2>
 <mat-dialog-content [formGroup]="form">
   <mat-form-field appearance="outline">
-    <input placeholder="Classification Name" matInput formControlName="classificationName" />
+    <input required placeholder="Classification Name" matInput formControlName="classificationName" />
   </mat-form-field>
   <mat-form-field appearance="outline">
-    <mat-select formControlName="classificationGender">
+    <mat-select required formControlName="classificationGender">
       <mat-option value="Boys">Boys</mat-option>
       <mat-option value="Girls">Girls</mat-option>
     </mat-select>
