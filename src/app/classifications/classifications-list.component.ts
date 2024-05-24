@@ -62,6 +62,7 @@ export class ClassificationsListComponent {
       this._classificationsService.deleteClassification(id);
       this.getBoysClassifications();
       this.getGirlsClassifications();
+      this._classificationsService.classificationEdited.emit();
     }
 
   }
