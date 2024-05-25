@@ -1,7 +1,18 @@
 .menu {
   padding-top: 70px;
+  padding-left: 45px;
 }
 
 .menu p {
   margin: 10px 20px;
+}
+
+.menu button {
+  width: 200px;
+  margin-top:15px;
+  display: block;
+}
+
+.main-body {
+  padding: 40px;
 }
