@@ -1,1 +1,5 @@
-<p>school-import works!</p>
+<p>{{title}}</p>
+<div>
+  <input type="file" #fileImportInput name="File Upload" id="csvFileUpload"
+         (change)="fileChangeListener($event)" accept=".csv" />
+</div>
