@@ -1,0 +1,21 @@
+<h2>Boys Classifications</h2>
+<div class="classification-list">
+@for (classification of boysClassifications$ | async; track classification.id) {
+  <div class="parent">
+    <div>{{classification.classificationName}}</div>
+    <div>{{classification.classificationGender}}</div>
+    <div><button mat-icon-button (click)="editClassification(classification)"><mat-icon>edit</mat-icon></button> <button mat-icon-button (click)="onDelete(classification.id)"><mat-icon>delete</mat-icon></button></div>
+  </div>
+}
+</div>
+<h2>Girls Classifications</h2>
+<div class="classification-list">
+@for (classification of girlsClassifications$ | async; track classification.id) {
+  <div class="parent">
+    <div>{{classification.classificationName}}</div>
+    <div>{{classification.classificationGender}}</div>
+    <div><button mat-icon-button (click)="editClassification(classification)"><mat-icon>edit</mat-icon></button> <button mat-icon-button (click)="onDelete(classification.id)"><mat-icon>delete</mat-icon></button></div>
+  </div>
+}
+</div>
+<button mat-stroked-button (click)="addClassification()"><mat-icon>add</mat-icon> Add Classification</button>

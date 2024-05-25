@@ -1,0 +1,14 @@
+.parent {
+  display: grid;
+  grid-template-columns: 10% 10% 80%;
+  grid-gap: 10px;
+  place-items: center;
+  justify-items: left;
+  text-align: left;
+  width:400px
+}
+
+.classification-list {
+  margin-bottom:20px;
+}
+
