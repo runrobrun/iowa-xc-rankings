@@ -1,15 +1,17 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, signal, ViewChild} from '@angular/core';
 import {NgxCsvParser, NgxCSVParserError} from 'ngx-csv-parser';
 import {Classification} from "../classifications/classification";
 import {School} from "../schools/school";
 import {SchoolsService} from "../schools/schools.service";
 import {NgIf} from "@angular/common";
+import {MatButton} from "@angular/material/button";
 
 @Component({
   selector: 'app-school-import',
   standalone: true,
   imports: [
-    NgIf
+    NgIf,
+    MatButton
   ],
   templateUrl: './school-import.component.html',
   styleUrl: './school-import.component.css'
@@ -24,6 +26,13 @@ export class SchoolImportComponent {
   @ViewChild('fileImportInput') fileImportInput: any;
   importing: boolean = false;
   schoolCount: number | undefined;
+
+  onCollectionDelete() {
+    this.schoolsService.deleteAllDocuments()
+      .catch((error) => {
+        console.error('Error deleting document:', error);
+      });
+  }
 
   fileChangeListener($event: any): void {
 
@@ -56,9 +65,6 @@ export class SchoolImportComponent {
         }
         this.schoolsService.createSchool(newSchool)
         this.schoolCount = recordIndex + 1
-        // record.forEach((column: any, columnIndex: any) => {
-        //   console.log(`\tColumn ${columnIndex} : ${column}`);
-        // })
       })
     }
   }
