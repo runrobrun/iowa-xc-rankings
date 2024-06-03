@@ -5,13 +5,15 @@ import {School} from "../schools/school";
 import {SchoolsService} from "../schools/schools.service";
 import {NgIf} from "@angular/common";
 import {MatButton} from "@angular/material/button";
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-school-import',
   standalone: true,
   imports: [
     NgIf,
-    MatButton
+    MatButton,
+    RouterLink
   ],
   templateUrl: './school-import.component.html',
   styleUrl: './school-import.component.css'

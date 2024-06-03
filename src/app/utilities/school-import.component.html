@@ -17,7 +17,7 @@
          (change)="fileChangeListener($event)" accept=".csv" />
 </div>
 <h3>That's it! You have now imported the schools. You can navigate to the
-  school listing to see what you imported.</h3>
+  <a routerLink="/schools">school listing</a> to see what you imported.</h3>
 <ng-container *ngIf="importing">
   <div>Imported {{schoolCount}} School</div>
 </ng-container>

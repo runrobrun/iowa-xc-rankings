@@ -1,5 +1,15 @@
 import {inject, Injectable} from '@angular/core';
-import {addDoc, collection, collectionData, deleteDoc, doc, Firestore, getDocs} from "@angular/fire/firestore";
+import {
+  addDoc,
+  collection,
+  collectionData,
+  deleteDoc,
+  doc,
+  Firestore,
+  getDocs, orderBy,
+  query,
+  where
+} from "@angular/fire/firestore";
 import {School} from "./school";
 import {Observable} from "rxjs";
 import {Classification} from "../classifications/classification";
@@ -26,5 +36,18 @@ export class SchoolsService {
     });
   }
 
+  async getAllSchools() {
+    const q = query(
+      this._collection,
+      orderBy('schoolClassification', 'desc'),
+      orderBy('schoolName', 'asc')
+    );
+    const querySnapshot = await getDocs(q);
+    let schools: School[] = [];
+    querySnapshot.forEach((doc) => {
+      schools = [...schools, {id: doc.id, ...doc.data()} as School]
+    });
+    return schools
+  }
 
 }

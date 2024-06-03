@@ -1,0 +1,13 @@
+<h1>Schools and Classifications for Current Season</h1>
+<div class="parent header">
+  <div>Team Name</div>
+  <div>Class</div>
+  <div>Coop School</div>
+</div>
+@for (school of schools$ | async; track school.id) {
+  <div class="parent">
+    <div>{{school.schoolName}}</div>
+    <div>{{school.schoolClassification}}</div>
+    <div>{{school.schoolCoop}}</div>
+  </div>
+}
