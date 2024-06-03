@@ -1,13 +1,23 @@
-<h2>School Classification Import/Delete</h2>
-<p>Note: At the beginning of each ranking season you will want to import the newest classifications.
+<h1>School Classification Import/Delete</h1>
+<h2>Step 1</h2>
+<p>At the beginning of each ranking season you will want to import the newest classifications.
   To start that process you will need to delete the last seasons classifications. Please click the delete button to
   remove the current classifications</p>
 <button mat-flat-button color="warn" (click)="onCollectionDelete()">Delete Schools</button>
 <p>Use this with caution to remove last seasons classification and import a new classification</p>
+<h2>Step 2</h2>
+<p>You will need to format the classification list obtained from the Iowa High School
+  Athletics Association site (iahsaa.org) by using <a href="./schools_template.csv" title="School Import Template">this template</a>.
+  You should be able to use excel or Google spreadsheets to edit the CSV template.
+  Do NOT remove the headers in this template.</p>
+<h2>Step 3</h2>
+<p>Click the upload button and choose the file you just formatted</p>
 <div>
   <input type="file" #fileImportInput name="File Upload" id="csvFileUpload"
          (change)="fileChangeListener($event)" accept=".csv" />
 </div>
+<h3>That's it! You have now imported the schools. You can navigate to the
+  school listing to see what you imported.</h3>
 <ng-container *ngIf="importing">
   <div>Imported {{schoolCount}} School</div>
 </ng-container>
