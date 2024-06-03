@@ -2,17 +2,13 @@ import {inject, Injectable} from '@angular/core';
 import {
   addDoc,
   collection,
-  collectionData,
   deleteDoc,
   doc,
   Firestore,
   getDocs, orderBy,
-  query,
-  where
+  query
 } from "@angular/fire/firestore";
 import {School} from "./school";
-import {Observable} from "rxjs";
-import {Classification} from "../classifications/classification";
 
 const PATH = 'schools'
 @Injectable({

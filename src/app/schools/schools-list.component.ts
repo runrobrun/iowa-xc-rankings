@@ -1,6 +1,5 @@
 import {Component, inject} from '@angular/core';
 import {SchoolsService} from './schools.service';
-import {Observable, of} from 'rxjs';
 import {School} from './school';
 import {AsyncPipe} from '@angular/common';
 
