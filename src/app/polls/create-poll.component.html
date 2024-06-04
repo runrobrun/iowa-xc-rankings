@@ -1,0 +1,43 @@
+<mat-card class="poll-form">
+  <mat-card-header>
+    <h3>Create a New Poll</h3>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="pollForm">
+      <div class="row">
+        <mat-form-field appearance="fill">
+          <mat-label>Poll Title</mat-label>
+          <input matInput placeholder="Poll Title (ex: Week 1)"
+                 #pollTitle formControlName="pollTitle">
+          <mat-hint>Enter title as "Week x" or "Pre-season"</mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Date Poll Opens:</mat-label>
+          <input matInput [matDatepicker]="openDate" formControlName="openDate"/>
+          <mat-hint>MM/DD/YYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="openDate"></mat-datepicker-toggle>
+          <mat-datepicker #openDate></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Poll Deadline:</mat-label>
+          <input matInput [matDatepicker]="pollCloseDate" formControlName="deadline"/>
+          <mat-hint>MM/DD/YYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="pollCloseDate"></mat-datepicker-toggle>
+          <mat-datepicker #pollCloseDate></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-slide-toggle formControlName="finalized">Is Finalized?</mat-slide-toggle>
+      </div>
+      <mat-card-actions>
+        <div class="row">
+          <button mat-raised-button color="primary" (click)="onCreatePoll()">Add Poll</button>
+        </div>
+      </mat-card-actions>
+    </form>
+  </mat-card-content>
+</mat-card>
