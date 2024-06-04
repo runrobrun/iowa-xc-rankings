@@ -11,6 +11,7 @@ import {MatButton} from '@angular/material/button';
 import {MatCard, MatCardActions, MatCardContent, MatCardHeader} from '@angular/material/card';
 import {Poll} from './poll';
 import {PollsService} from './polls.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-poll',
@@ -46,7 +47,9 @@ export class CreatePollComponent {
     season: null
   });
 
-  constructor(private fb: FormBuilder, private _pollsService: PollsService) {
+  constructor(private fb: FormBuilder,
+              private _pollsService: PollsService,
+              private router: Router) {
   }
 
   onCreatePoll() {
@@ -60,6 +63,8 @@ export class CreatePollComponent {
     newPoll.openDate = Timestamp.fromDate(this.pollForm.value.openDate);
     newPoll.deadline = Timestamp.fromDate(this.pollForm.value.deadline);
 
-    this._pollsService.createPoll(newPoll);
+    this._pollsService.createPoll(newPoll).then(() => {
+      this.router.navigate(['/polls'])
+    });
   }
 }
