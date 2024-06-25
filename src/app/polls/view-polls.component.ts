@@ -34,4 +34,19 @@ export class ViewPollsComponent {
   private getPolls() {
     this.polls$ = this._pollsService.getAllPolls();
   }
+
+  editClassification(poll: Poll) {
+    console.log(poll);
+  }
+
+  onDelete(id: string) {
+    if (confirm('Are you sure you want to delete this Poll?')) {
+      this._pollsService.deletePoll(id);
+      this.getPolls();
+      // this._classificationsService.deleteClassification(id);
+      // this.getBoysClassifications();
+      // this.getGirlsClassifications();
+      // this._classificationsService.classificationEdited.emit();
+    }
+  }
 }

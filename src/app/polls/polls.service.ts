@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {addDoc, collection, Firestore, getDocs, orderBy, query, where} from '@angular/fire/firestore';
+import {addDoc, collection, deleteDoc, doc, Firestore, getDocs, orderBy, query, where} from '@angular/fire/firestore';
 import {Poll} from './poll';
 
 const PATH = 'polls';
@@ -28,5 +28,13 @@ export class PollsService {
       polls = [...polls, {id: doc.id, ...doc.data() } as Poll];
     });
     return polls;
+  }
+
+  deletePoll(id: string) {
+    return deleteDoc(this.document(id));
+  }
+
+  private document(id: string | undefined) {
+    return doc(this._firestore, `${PATH}/${id}`);
   }
 }

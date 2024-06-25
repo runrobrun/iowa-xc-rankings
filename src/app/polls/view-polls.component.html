@@ -14,7 +14,7 @@
     <div>{{poll.pollTitle}}</div>
     <div>{{poll.openDate?.toDate() | date: 'MM/dd/yyyy'}}</div>
     <div>{{poll.deadline?.toDate() | date: 'MM/dd/yyyy'}}</div>
-    <div></div>
+    <div><button mat-icon-button (click)="editClassification(poll)"><mat-icon>edit</mat-icon></button> <button mat-icon-button (click)="onDelete(poll.id)"><mat-icon>delete</mat-icon></button></div>
   </div>
 }
 

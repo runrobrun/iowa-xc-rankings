@@ -1,6 +1,6 @@
 .parent {
   display: grid;
-  grid-template-columns: 20% 20% 20% 40%;
+  grid-template-columns: 25% 25% 25% 25%;
   grid-gap: 10px;
   place-items: center;
   justify-items: left;
