@@ -1,0 +1,34 @@
+<h2 mat-dialog-title>Edit Polls</h2>
+<mat-dialog-content [formGroup]="form">
+  <mat-form-field appearance="outline">
+    <input required placeholder="Classification Name" matInput formControlName="pollTitle" />
+  </mat-form-field>
+  <div class="row">
+    <mat-form-field>
+      <mat-label>Date Poll Opens:</mat-label>
+      <input matInput [matDatepicker]="openDate" formControlName="openDate"/>
+      <mat-hint>MM/DD/YYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="openDate"></mat-datepicker-toggle>
+      <mat-datepicker #openDate></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field>
+      <mat-label>Poll Deadline:</mat-label>
+      <input matInput [matDatepicker]="pollCloseDate" formControlName="deadline"/>
+      <mat-hint>MM/DD/YYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="pollCloseDate"></mat-datepicker-toggle>
+      <mat-datepicker #pollCloseDate></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-slide-toggle formControlName="finalized">Is Finalized?</mat-slide-toggle>
+  </div>
+  <mat-card-actions>
+    <div class="row">
+      <button mat-raised-button (click)="close()">Close</button>
+      <button mat-raised-button color="primary" (click)="onSavePoll()">Save Updates</button>
+    </div>
+  </mat-card-actions>
+</mat-dialog-content>
+

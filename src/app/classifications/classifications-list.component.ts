@@ -27,7 +27,7 @@ export class ClassificationsListComponent {
   boysClassifications$: Observable<Classification[]> | undefined;
   girlsClassifications$: Observable<Classification[]> | undefined;
 
-  constructor(private dialog: MatDialog,) {
+  constructor(private dialog: MatDialog) {
     this._classificationsService.classificationEdited.subscribe(
       () => {
         this.getBoysClassifications();

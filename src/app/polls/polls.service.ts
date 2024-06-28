@@ -1,5 +1,16 @@
-import {inject, Injectable} from '@angular/core';
-import {addDoc, collection, deleteDoc, doc, Firestore, getDocs, orderBy, query, where} from '@angular/fire/firestore';
+import {EventEmitter, inject, Injectable} from '@angular/core';
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  Firestore,
+  getDocs,
+  orderBy,
+  query,
+  updateDoc,
+  where
+} from '@angular/fire/firestore';
 import {Poll} from './poll';
 
 const PATH = 'polls';
@@ -10,6 +21,7 @@ const PATH = 'polls';
 export class PollsService {
   private _firestore = inject(Firestore);
   private _collection= collection(this._firestore, PATH);
+  pollEdited = new EventEmitter<Poll>();
 
   constructor() { }
   createPoll(newPoll: Partial<Poll>) {
@@ -36,5 +48,9 @@ export class PollsService {
 
   private document(id: string | undefined) {
     return doc(this._firestore, `${PATH}/${id}`);
+  }
+
+  updatePoll(id: string, changes: any) {
+    return updateDoc(this.document(id), {...changes});
   }
 }

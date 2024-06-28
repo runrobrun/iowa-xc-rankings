@@ -1,12 +1,13 @@
 import {Component, inject} from '@angular/core';
-import {PollsService} from './polls.service';
-import {Observable} from 'rxjs';
-import {Poll} from './poll';
 import {AsyncPipe, DatePipe, NgIf} from '@angular/common';
+import {PollsService} from './polls.service';
+import {Poll} from './poll';
 import {MatIconButton, MatMiniFabButton} from '@angular/material/button';
 import {RouterLink} from '@angular/router';
 import {MatIcon} from '@angular/material/icon';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {PollDialogComponent} from './poll-dialog.component';
 
 @Component({
   selector: 'app-view-polls',
@@ -31,8 +32,13 @@ export class ViewPollsComponent {
   polls$: Promise<Poll[]> | undefined;
   loading: boolean = false;
 
-  constructor() {
+  constructor(private dialog: MatDialog) {
     this.getPolls();
+    this._pollsService.pollEdited.subscribe(
+      () => {
+        this.getPolls();
+      }
+    )
   }
 
   async getPolls() {
@@ -42,8 +48,16 @@ export class ViewPollsComponent {
     this.loading = false;
   }
 
-  editClassification(poll: Poll) {
-    console.log(poll);
+  editPoll(poll: Poll) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.minWidth = '400px';
+
+    dialogConfig.data = poll;
+    this.dialog
+      .open(PollDialogComponent, dialogConfig)
+      .afterClosed()
+      .subscribe()
   }
 
   onDelete(id: string) {
