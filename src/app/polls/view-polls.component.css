@@ -1,0 +1,12 @@
+.parent {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-gap: 10px;
+  place-items: center;
+  justify-items: left;
+  text-align: left;
+  padding: 3px;
+  width:600px
+}
+
+.parent:nth-child(odd){background-color:#dfdfdf}

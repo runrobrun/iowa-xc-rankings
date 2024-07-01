@@ -1,0 +1,22 @@
+<h1>Polls for {{ currentSeason }} season <button routerLink='/create-poll'
+                                                 mat-icon-button color="primary" title="add new poll">
+  <mat-icon>add</mat-icon>
+</button></h1>
+
+<div class="parent">
+  <div>Poll</div>
+  <div>Open Date</div>
+  <div>Deadline</div>
+  <div></div>
+</div>
+<mat-spinner *ngIf="loading"></mat-spinner>
+@for (poll of polls$ | async; track poll.id) {
+  <div class="parent" *ngIf="!loading">
+    <div>{{poll.pollTitle}}</div>
+    <div>{{poll.openDate?.toDate() | date: 'MM/dd/yyyy'}}</div>
+    <div>{{poll.deadline?.toDate() | date: 'MM/dd/yyyy'}}</div>
+    <div *ngIf="poll.finalized">Poll Finalized</div>
+    <div *ngIf="!poll.finalized"><button mat-icon-button (click)="editPoll(poll)" ><mat-icon>edit</mat-icon></button> <button mat-icon-button (click)="onDelete(poll.id)"><mat-icon>delete</mat-icon></button></div>
+  </div>
+}
+
